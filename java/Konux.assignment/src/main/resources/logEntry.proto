@@ -1,0 +1,12 @@
+syntax = "proto2";
+
+package tutorial;
+
+option java_package = "com.example.tutorial";
+option java_outer_classname = "LogEntryProto";
+
+message LogEntry {
+  required long timestamp = 1;
+  required long userId = 2;
+  required string event = 3;
+}
