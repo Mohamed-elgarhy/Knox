@@ -15,8 +15,6 @@ public class LogServiceImpl implements LogService {
 
 	@Override
 	public void logServiceDetails(LogEntry logEntry) {
-		System.out.println(logEntry);
-		
 		LogEntryProto.LogEntry entry =  LogEntryProto.LogEntry.newBuilder()
 		.setTimestamp(logEntry.getTimestamp())
 		.setUserId(logEntry.getUserId())
@@ -27,16 +25,11 @@ public class LogServiceImpl implements LogService {
 		Socket server;
 		try {
 			server = new Socket("localhost",7234);
-			System.out.println("Connected");
 			OutputStream out = server.getOutputStream();
 			entry.writeTo(out);
-			//out.write(logMessageAsByteArray);
-
-			System.out.println("Sent as bytes : "+logMessageAsByteArray);
 			out.close();
 			server.close();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
